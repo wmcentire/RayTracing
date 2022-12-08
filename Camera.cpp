@@ -48,8 +48,7 @@ Ray Camera::PointToRay(const glm::vec2& point) const
 	Ray ray;
 	ray.origin = m_eye;
 	// calculate direction from point * view plane 
-	ray.direction = m_lowerLeft + (point.x * m_horizontal) + (point.y * m_vertical
-		) - m_eye;
+	ray.direction = m_lowerLeft + (point.x * m_horizontal) + (point.y * m_vertical) - m_eye;
 
 	return ray;
 }
