@@ -22,11 +22,6 @@ void Renderer::Shutdown()
 
 void Renderer::Render(Canvas& canvas, Scene& scene, Camera& camera, int samples)
 {
-	// camera / viewport 
-	glm::vec3 lowerLeft{ -2, -1, -1 };
-	glm::vec3 eye{ 0, 0, 0 };
-	glm::vec3 right{ 4, 0, 0 };
-	glm::vec3 up{ 0, 2, 0 };
 
 	for (int y = 0; y < canvas.GetHeight(); y++)
 	{
@@ -56,6 +51,11 @@ void Renderer::Render(Canvas& canvas, Scene& scene, Camera& camera, int samples)
 		}
 	}
 }
+
+//bool Renderer::CreateWindow(std::string& name, int width, int height)
+//{
+//	return false;
+//}
 
 bool Renderer::CreateWindow(int width, int height)
 {
@@ -89,5 +89,5 @@ color3 Renderer::GetBackgroundFromRay(const Ray& ray)
 	glm::vec3 direction = glm::normalize(ray.direction);
 	float t = 0.5f * (direction.y + 1.0f);
 
-	return interp(color3{ 1.0f }, color3{ 0.5f, 0.7f, 1.0f }, t);
+	return lerp(color3{ 1.0f }, color3{ 0.5f, 0.7f, 1.0f }, t);
 }
